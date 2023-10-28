@@ -13,4 +13,5 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - id: catwalk
-      uses: ./catwalk
+      # uses: ./catwalk
+      uses: nekowinston/catppuccin-actions/catwalk@main

@@ -20,7 +20,7 @@ inputs:
 runs:
   using: composite
   steps:
-    - run: ./catwalk/download.sh
+    - run: catwalk/download.sh
       shell: bash
     - run: |
         catwalk ./assets/latte.${{inputs.format}} ./assets/frappe.${{inputs.format}} ./assets/macchiato.${{inputs.format}} ./assets/mocha.${{inputs.format}} -o ./assets/preview.${{inputs.format}}

@@ -15,7 +15,6 @@ Windows)
 esac
 
 export DOWNLOAD="https://github.com/catppuccin/toolbox/releases/download/catwalk-v${VERSION}/catwalk-${PLATFORM}"
-mkdir -p "${HOME}/.local/bin"
-echo "${HOME}/.local/bin" >>"$GITHUB_PATH"
-curl -L "${DOWNLOAD}" -o "${HOME}/.local/bin/catwalk" --retry 5
-chmod +x "${HOME}/.local/bin/catwalk"
+curl -L "${DOWNLOAD}" -o "${GITHUB_ACTION_PATH}/catwalk" --retry 5
+echo "${GITHUB_ACTION_PATH}" >>"$GITHUB_PATH"
+chmod +x "${GITHUB_ACTION_PATH}/catwalk"
