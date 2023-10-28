@@ -1,0 +1,16 @@
+name: Rock bottom
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  catwalk:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - id: catwalk
+      uses: ./catwalk

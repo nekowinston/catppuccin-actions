@@ -1,0 +1,38 @@
+name: Catppuccin Catwalk
+description: Runs catppuccin/toolbox#catwalk on a repository
+inputs:
+  format:
+    description: Which format to use for image assets
+    required: false
+    default: webp
+  asset-dir:
+    description: Asset folder to use
+    required: false
+    default: assets
+  push:
+    description: Push changes automatically
+    required: false
+    default: "false"
+# outputs:
+#   random-number:
+#     description: "Random number"
+#     value: ${{ steps.random-number-generator.outputs.random-number }}
+runs:
+  using: composite
+  steps:
+    - run: ./catwalk/download.sh
+      shell: bash
+    - run: |
+        catwalk ./assets/latte.${{inputs.format}} ./assets/frappe.${{inputs.format}} ./assets/macchiato.${{inputs.format}} ./assets/mocha.${{inputs.format}} -o ./assets/preview.${{inputs.format}}
+      shell: bash
+    - uses: EndBug/add-and-commit@v9
+      with:
+        message: "chore: re-generate catwalk previews"
+        default_author: github_actions
+    # - id: random-number-generator
+    #   run: echo "random-number=$(echo $RANDOM)" >> $GITHUB_OUTPUT
+    #   shell: bash
+    # - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
+    #   shell: bash
+    # - run: goodbye.sh
+    #   shell: bash
